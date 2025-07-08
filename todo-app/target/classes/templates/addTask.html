@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD TASK</title>
+    <style>
+        :root {
+    --bg-dark: #1e1e2f;
+    --form-bg: #2e2e3e;
+    --accent: #00bcd4;
+    --accent-hover: #0097a7;
+    --text-light: #e0e0e0;
+    --input-bg: #3a3a4d;
+    --border: #555;
+    --radius: 8px;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: var(--form-bg);
+    padding: 24px;
+    width: 320px;
+    border-radius: var(--radius);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-sizing: border-box;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+}
+
+a {
+    display: block;
+    margin-top: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+
+    <form action="/todo/add" method="post">
+        <label for="name">NAME</label>
+        <input type="text" name="name" id="name">
+
+        <button type="submit">ADD</button>
+        <a href="/">BACK</a>
+    </form>
+
+</body>
+
+</html>

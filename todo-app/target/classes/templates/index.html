@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APPLICATION</title>
+    <style>
+       :root {
+    --bg-color: #1e1e2f;
+    --glass: rgba(255, 255, 255, 0.05);
+    --accent: #00bcd4;
+    --text-color: #eee;
+    --hover-accent: #0097a7;
+    --border: rgba(255, 255, 255, 0.2);
+    --blur: 10px;
+    --radius: 12px;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 30px 0;
+    font-size: 2.5rem;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent);
+}
+
+a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: var(--accent);
+    color: var(--text-color);
+    border-radius: var(--radius);
+    margin: 10px;
+    display: inline-block;
+    box-shadow: 0 2px 6px var(--border);
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: var(--hover-accent);
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    backdrop-filter: blur(var(--blur));
+    background-color: var(--glass);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+th, td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    color: var(--text-color);
+}
+
+th {
+    background-color: var(--accent);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>TODO LIST</h1>
+    <a th:href="@{/todo/add}">ADD TASK</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <li>
+                    <th>NAME</th>
+                    <th>UPDATE</th>
+                    <th>DONE</th>
+                </li>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.name}"></td>
+                <td><a th:href="@{/todo/update/{id}(id = ${task.id})}">UPDATE</a></td>
+                <td><a th:href="@{/todo/{id}(id = ${task.id})}">DONE</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
